@@ -90,3 +90,6 @@ Adding a new device requires no configuration at all: install the client on it a
 - **History is not persistent:** Messages live in RAM and are lost when the hub restarts.
 - **No encryption or authentication:** Messages are plain text and anyone on the network can send them. Use only on local networks you trust.
 - **Polling delay:** Messages arrive with up to 1 second of delay rather than instantly.
+
+## Source Code
+https://github.com/hexpad/raspberry-pi-chat-hub/blob/main/client.cpp
