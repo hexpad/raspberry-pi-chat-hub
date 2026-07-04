@@ -1,5 +1,8 @@
 # Central Server (Hub) Messaging Project
 
+<img width="1149" height="761" alt="picture" src="https://github.com/user-attachments/assets/4bacdc9e-b634-41ae-9ffb-fbfd9a3dd688" />
+
+
 A terminal-based chat system for local networks, written in C++ with the [cpp-httplib](https://github.com/yhirose/cpp-httplib) library. A Raspberry Pi acts as the central server (hub): all messages are sent to the Pi, which stores them and distributes them to any client that asks. Clients only need to know the Pi's IP address — they never need each other's addresses.
 
 The project consists of two files:
