@@ -1,6 +1,3 @@
-// hub.cpp - Runs on the Raspberry Pi (central server)
-// Compile: g++ -std=c++11 -Wno-psabi hub.cpp -o hub -lpthread
-// Usage:   ./hub
 #include "httplib.h"
 #include <iostream>
 #include <vector>
