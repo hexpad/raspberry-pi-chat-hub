@@ -1,7 +1,3 @@
-// client.cpp - Runs on all other devices
-// Compile: g++ -std=c++11 -Wno-psabi client.cpp -o client -lpthread
-// Usage:   ./client <your_name> <hub_ip>
-// Example: ./client Ali 192.168.1.37
 #include "httplib.h"
 #include <iostream>
 #include <thread>
