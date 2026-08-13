@@ -3,7 +3,7 @@
 <img width="1149" height="761" alt="picture" src="https://github.com/user-attachments/assets/4bacdc9e-b634-41ae-9ffb-fbfd9a3dd688" />
 
 
-A terminal-based chat system for local networks, written in C++ with the [cpp-httplib](https://github.com/yhirose/cpp-httplib) library. A Raspberry Pi acts as the central server (hub): all messages are sent to the Pi, which stores them and distributes them to any client that asks. Clients only need to know the Pi's IP address — they never need each other's addresses.
+A terminal-based chat system for local networks, written in C++ with the [cpp-httplib](https://github.com/yhirose/cpp-httplib) library. A Raspberry Pi acts as the central server (hub): all messages are sent to the Pi, which stores them and distributes them to any client that asks. Clients only need to know the Pi's IP address they never need each other's addresses.
 
 The project consists of two files:
 
@@ -16,23 +16,10 @@ The project consists of two files:
 
 The hub is an HTTP server on port 8080 that answers two kinds of requests:
 
-- **`POST /message`** — When a client sends a message, the hub appends it to its list.
-- **`GET /message?from=N`** — When a client says "I have seen N messages," the hub returns every message after the N-th one.
+- **`POST /message`** When a client sends a message, the hub appends it to its list.
+- **`GET /message?from=N`** When a client says "I have seen N messages," the hub returns every message after the N-th one.
 
 Each client does two jobs at once: the main loop sends whatever you type to the hub, while a background thread asks the hub once per second whether there are new messages and prints any that arrive. This regular asking technique is called **polling**.
-
-```
-                       ┌──────────────────────────┐
-                       │  Raspberry Pi (HUB)      │
-                       │  message list: [.....]   │
-                       └───▲──────▲──────▲────────┘
-            POST /message  │      │      │  GET /message?from=N
-                 ┌─────────┘      │      └─────────┐
-            ┌────┴────┐      ┌────┴────┐      ┌────┴────┐
-            │  Ali    │      │  Veli   │      │  Ayşe   │
-            │ (Mac)   │      │ (Laptop)│      │ (PC)    │
-            └─────────┘      └─────────┘      └─────────┘
-```
 
 Your own messages also come back from the hub and appear on your screen; this serves as a natural confirmation that the message reached the hub.
 
@@ -42,7 +29,7 @@ Your own messages also come back from the hub and appear on your screen; this se
 - The `g++` compiler on each device
 - The `httplib.h` header file
 
-cpp-httplib is a header-only library: no installation or linking is required — just place the single `httplib.h` file in the same folder as the source code. There is no need to download the whole repository.
+cpp-httplib is a header-only library: no installation or linking is required just place the single `httplib.h` file in the same folder as the source code. There is no need to download the whole repository.
 
 ## Setup
 
@@ -65,7 +52,7 @@ curl -O https://raw.githubusercontent.com/yhirose/cpp-httplib/master/httplib.h  
 g++ -std=c++11 -Wno-psabi client.cpp -o client -lpthread
 ```
 
-Compiler flags: `-std=c++11` enables the C++11 standard required by httplib, `-lpthread` links the threading library, and `-Wno-psabi` hides the harmless "parameter passing changed in GCC 7.1" notes seen on ARM (the Pi) — they are not errors.
+Compiler flags: `-std=c++11` enables the C++11 standard required by httplib, `-lpthread` links the threading library, and `-Wno-psabi` hides the harmless "parameter passing changed in GCC 7.1" notes seen on ARM (the Pi) they are not errors.
 
 ## Usage
 
